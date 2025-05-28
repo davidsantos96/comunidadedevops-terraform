@@ -1,30 +1,28 @@
-resource "aws_subnet" "eks_subnet_public_1a" {
+resource "aws_subnet" "eks_subnet_private_1a" {
   vpc_id     = aws_vpc.eks_vpc.id
-  cidr_block = cidrsubnet(var.cidr_block, 8, 1)
+  cidr_block = cidrsubnet(var.cidr_block, 8, 3)
   # Adjust the cidr_block as needed, e.g., "
   availability_zone       = "${data.aws_region.current.id}a"
-  map_public_ip_on_launch = true
   tags = merge(
     local.tags,
     # Assuming local.tags is defined in your locals.tf or similar file
     {
       Name = "comunidadedevops-subnet-1a"
 
-      Name                     = "comunidadedevops-pub-subnet-1a",
-      "kubernetes.io/role/elb" = "1"
+      Name                              = "comunidadedevops-priv-subnet-1a",
+      "kubernetes.io/role/internal-elb" = "1"
     }
 
   )
 }
 
 
-resource "aws_subnet" "eks_subnet_public_1b" {
+resource "aws_subnet" "eks_subnet_priavate_1b" {
   vpc_id     = aws_vpc.eks_vpc.id
-  cidr_block = cidrsubnet(var.cidr_block, 8, 2)
+  cidr_block = cidrsubnet(var.cidr_block, 8, 4)
   # Adjust the cidr_block as needed, e.g., "
   availability_zone = "${data.aws_region.current.id}b"
   # Ensure the availability zone matches your region's AZs
-  map_public_ip_on_launch = true
 
   tags = merge(
     local.tags,
@@ -32,8 +30,8 @@ resource "aws_subnet" "eks_subnet_public_1b" {
     {
       Name = "comunidadedevops-subnet-1b"
 
-      Name                     = "comunidadedevops-pub-subnet-1b",
-      "kubernetes.io/role/elb" = "1"
+      Name                              = "comunidadedevops-priv-subnet-1b",
+      "kubernetes.io/role/internal-elb" = "1"
     }
 
   )
