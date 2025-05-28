@@ -8,9 +8,8 @@ resource "aws_subnet" "eks_subnet_public_1a" {
     local.tags,
     # Assuming local.tags is defined in your locals.tf or similar file
     {
-      Name = "comunidadedevops-subnet-1a"
 
-      Name                     = "comunidadedevops-pub-subnet-1a",
+      Name                     = "${var.project_name}-pub-subnet-1a",
       "kubernetes.io/role/elb" = "1"
     }
 
@@ -30,9 +29,8 @@ resource "aws_subnet" "eks_subnet_public_1b" {
     local.tags,
     # Assuming local.tags is defined in your locals.tf or similar file
     {
-      Name = "comunidadedevops-subnet-1b"
 
-      Name                     = "comunidadedevops-pub-subnet-1b",
+      Name                     = "${var.project_name}-pub-subnet-1b",
       "kubernetes.io/role/elb" = "1"
     }
 
