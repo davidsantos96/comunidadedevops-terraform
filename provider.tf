@@ -5,12 +5,12 @@ terraform {
       version = "6.0.0-beta2"
     }
   }
-  backend "s3" {
-    bucket = "comunidadedevops-bucket-david"
-    key    = "dev/terraform.tfstate"
-    region = "us-east-1"
+#  backend "s3" {
+ #   bucket = "comunidadedevops-bucket-david"
+ #   key    = "dev/terraform.tfstate"
+  #  region = "us-east-1"
   }
-}
+#}
 
 provider "aws" {
   # Configuration options
