@@ -49,32 +49,32 @@ resource "aws_nat_gateway" "eks_ngw_1b" {
 }
 # Create route tables for the private subnets to route traffic through the NAT Gateways
 resource "aws_route_table" "eks_private_rt_1a" {
-    vpc_id = aws_vpc.eks_vpc.id
-    
-    route {
-        cidr_block     = "0.0.0.0/0"
-        nat_gateway_id = aws_nat_gateway.eks_ngw_1a.id
+  vpc_id = aws_vpc.eks_vpc.id
+
+  route {
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.eks_ngw_1a.id
+  }
+  tags = merge(
+    var.tags,
+    {
+      Name = "${var.project_name}-private-rt-1a"
     }
-    tags = merge(
-      var.tags,
-      {
-        Name = "${var.project_name}-private-rt-1a"
-      }
-    )
-  
+  )
+
 }
 
 resource "aws_route_table" "eks_private_rt_1b" {
-    vpc_id = aws_vpc.eks_vpc.id
-    
-    route {
-        cidr_block     = "0.0.0.0/0"
-        nat_gateway_id = aws_nat_gateway.eks_ngw_1b.id
+  vpc_id = aws_vpc.eks_vpc.id
+
+  route {
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.eks_ngw_1b.id
+  }
+  tags = merge(
+    var.tags,
+    {
+      Name = "${var.project_name}-private-rt-1b"
     }
-    tags = merge(
-      var.tags,
-      {
-        Name = "${var.project_name}-private-rt-1b"
-      }
-    )
+  )
 }

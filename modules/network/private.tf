@@ -16,7 +16,7 @@ resource "aws_subnet" "eks_subnet_private_1a" {
 }
 
 
-resource "aws_subnet" "eks_subnet_priavate_1b" {
+resource "aws_subnet" "eks_subnet_private_1b" {
   vpc_id     = aws_vpc.eks_vpc.id
   cidr_block = cidrsubnet(var.cidr_block, 8, 4)
   # Adjust the cidr_block as needed, e.g., "
@@ -42,6 +42,6 @@ resource "aws_route_table_association" "eks_rt_association_private_1a" {
 }
 resource "aws_route_table_association" "eks_rt_association_private_1b" {
   route_table_id = aws_route_table.eks_private_rt_1b.id
-  subnet_id      = aws_subnet.eks_subnet_priavate_1b.id
+  subnet_id      = aws_subnet.eks_subnet_private_1b.id
 
 }
