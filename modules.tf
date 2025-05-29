@@ -9,3 +9,14 @@ module "eks_network" {
   # Add any other variables required by the network module
 
 }
+
+module "eks_cluster" {
+  source = "./modules/cluster"
+
+  project_name = var.project_name
+  tags         = local.tags
+  # Ensure to pass the tags variable if required by the cluster module
+
+  # Add any other variables required by the cluster module
+
+}
