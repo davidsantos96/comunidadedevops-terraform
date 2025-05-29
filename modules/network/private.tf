@@ -4,8 +4,8 @@ resource "aws_subnet" "eks_subnet_private_1a" {
   # Adjust the cidr_block as needed, e.g., "
   availability_zone = "${data.aws_region.current.id}a"
   tags = merge(
-    local.tags,
-    # Assuming local.tags is defined in your locals.tf or similar file
+    var.tags,
+    # Assuming var.tags is defined in your locals.tf or similar file
     {
 
       Name                              = "${var.project_name}-priv-subnet-1a",
@@ -24,8 +24,8 @@ resource "aws_subnet" "eks_subnet_priavate_1b" {
   # Ensure the availability zone matches your region's AZs
 
   tags = merge(
-    local.tags,
-    # Assuming local.tags is defined in your locals.tf or similar file
+    var.tags,
+    # Assuming var.tags is defined in your locals.tf or similar file
     {
 
       Name                              = "${var.project_name}-priv-subnet-1b",
@@ -34,7 +34,7 @@ resource "aws_subnet" "eks_subnet_priavate_1b" {
 
   )
 }
-
+# Create NAT Gateways in the private subnets for the EKS cluster
 resource "aws_route_table_association" "eks_rt_association_private_1a" {
   route_table_id = aws_route_table.eks_private_rt_1a.id
   subnet_id      = aws_subnet.eks_subnet_private_1a.id

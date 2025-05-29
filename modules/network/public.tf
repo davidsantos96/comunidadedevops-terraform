@@ -5,8 +5,8 @@ resource "aws_subnet" "eks_subnet_public_1a" {
   availability_zone       = "${data.aws_region.current.id}a"
   map_public_ip_on_launch = true
   tags = merge(
-    local.tags,
-    # Assuming local.tags is defined in your locals.tf or similar file
+    var.tags,
+    # Assuming var.tags is defined in your locals.tf or similar file
     {
 
       Name                     = "${var.project_name}-pub-subnet-1a",
@@ -26,8 +26,8 @@ resource "aws_subnet" "eks_subnet_public_1b" {
   map_public_ip_on_launch = true
 
   tags = merge(
-    local.tags,
-    # Assuming local.tags is defined in your locals.tf or similar file
+    var.tags,
+    # Assuming var.tags is defined in your locals.tf or similar file
     {
 
       Name                     = "${var.project_name}-pub-subnet-1b",

@@ -1,3 +1,4 @@
+# This file defines local variables for tagging resources in AWS.
 locals {
   tags = {
     "Department"   = "DevOps"

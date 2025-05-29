@@ -6,6 +6,6 @@ resource "aws_vpc" "eks_vpc" {
     {
       Name = "${var.project_name}-vpc"
     },
-    local.tags
+    var.tags
   )
 }
