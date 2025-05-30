@@ -37,3 +37,14 @@ module "eks_managed_node_group" {
   # Add any other variables required by the manage-node-group module
 
 }
+
+module "eks_load_balancer_controller" {
+  source = "./modules/aws-load-balancer-controller"
+
+  project_name = var.project_name
+  tags         = local.tags
+  # Ensure to pass the tags variable if required by the aws-load-balancer-controller module
+
+  # Add any other variables required by the aws-load-balancer-controller module
+
+}
