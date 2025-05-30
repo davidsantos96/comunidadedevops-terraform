@@ -22,3 +22,14 @@ module "eks_cluster" {
   # Add any other variables required by the cluster module
 
 }
+
+module "manage_node_group" {
+  source = "./modules/manage-node-group"
+
+  project_name = var.project_name
+  tags         = local.tags
+  # Ensure to pass the tags variable if required by the manage-node-group module
+
+  # Add any other variables required by the manage-node-group module
+
+}
