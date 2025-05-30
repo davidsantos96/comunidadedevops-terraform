@@ -7,3 +7,7 @@ variable "project_name" {
   description = "Project name to be used name the resources (Name tag)"
   type        = string
 }
+variable "eks_cluster_name" {
+  description = "Nome do cluster EKS"
+  type        = string
+}

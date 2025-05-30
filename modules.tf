@@ -23,11 +23,15 @@ module "eks_cluster" {
 
 }
 
-module "manage_node_group" {
-  source = "./modules/manage-node-group"
+module "eks_managed_node_group" {
+  source = "./modules/managed-node-group"
 
-  project_name = var.project_name
-  tags         = local.tags
+  project_name      = var.project_name
+  tags              = local.tags
+  subnet_private_1a = module.eks_network.subnet_priv_1a
+  subnet_private_1b = module.eks_network.subnet_priv_1b
+  eks_cluster_name  = module.eks_cluster.cluster_name
+  # Ensure to pass the cluster name variable if required by the manage-node-group module
   # Ensure to pass the tags variable if required by the manage-node-group module
 
   # Add any other variables required by the manage-node-group module
