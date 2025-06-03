@@ -11,3 +11,14 @@ variable "eks_cluster_name" {
   description = "Nome do cluster EKS"
   type        = string
 }
+
+variable "region" {
+  description = "AWS region where the resources will be created"
+  type        = string
+}
+
+variable "tags" {
+  description = "Tags to be applied to all resources"
+  type        = map(string)
+  
+}
