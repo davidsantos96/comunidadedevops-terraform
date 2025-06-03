@@ -44,6 +44,7 @@ module "eks_load_balancer_controller" {
   project_name = var.project_name
   tags         = local.tags
   oidc         = module.eks_cluster.oidc
+  cluster_name = module.eks_cluster.cluster_name
   # Ensure to pass the tags variable if required by the aws-load-balancer-controller module
 
   # Add any other variables required by the aws-load-balancer-controller module
