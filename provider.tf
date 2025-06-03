@@ -4,6 +4,12 @@ terraform {
       source  = "hashicorp/aws"
       version = "6.0.0-beta2"
     }
+     
+    kubernetes = {
+      source = "hashicorp/kubernetes"
+      version = "2.37.1"
+    }
+  
   }
   #  backend "s3" {
   #   bucket = "comunidadedevops-bucket-david"
@@ -15,4 +21,16 @@ terraform {
 provider "aws" {
   # Configuration options
   region = "us-east-1"
+}
+
+
+provider "kubernetes" {
+  host                   = module.eks_cluster.cluster_endpoint
+  cluster_ca_certificate = base64decode(module.eks_cluster.certificate_authority)
+  exec {
+    api_version = "client.authentication.k8s.io/v1beta1"
+    args        = ["eks", "get-token", "--cluster-name", module.eks_cluster.cluster_name]
+    # This command retrieves the authentication token for the EKS cluster
+    command     = "aws"
+  }
 }
