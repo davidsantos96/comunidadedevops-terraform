@@ -14,7 +14,7 @@ resource "helm_release" "eks_helm_controller" {
       name  = "serviceAccount.create"
       value = "false"
     },
- {
+    {
       name  = "serviceAccount.name"
       value = "aws-load-balancer-controller"
       value = "9127"
