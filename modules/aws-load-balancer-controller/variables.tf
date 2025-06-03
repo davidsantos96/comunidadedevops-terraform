@@ -10,3 +10,9 @@ variable "tags" {
   default     = {}
 
 }
+
+variable "oidc" {
+  description = "The OIDC issuer URL for the EKS cluster."
+  type        = string
+
+}
